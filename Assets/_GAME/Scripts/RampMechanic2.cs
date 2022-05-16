@@ -12,7 +12,7 @@ public class RampMechanic2 : MonoBehaviour
 
     private const int blendShapeIndexCount = 2;
 
-    private bool isWall = false;
+    private bool isPrefabCreatable = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,12 +42,13 @@ public class RampMechanic2 : MonoBehaviour
 
         if ((hit.collider.tag == "Wall" || hit.collider.tag == "Ramp") && Time.timeScale > 0)
         {
+            isPrefabCreatable = true;
+
             var temp = Input.mousePosition;
             temp.y += Screen.height / 10f;
             Ray rr2 = Camera.main.ScreenPointToRay(temp);
             Physics.Raycast(rr2, out hit);
 
-            isWall = true;
             if(lastCreatedRamp)
                 lastCreatedRamp.GetComponent<RampPrefab>().IsLastPrefab = false;
             lastCreatedRamp = Instantiate(rampPrefab, new Vector3(hit.point.x, hit.point.y, 0f), Quaternion.identity, rampPrefabCreateTransform);
@@ -58,7 +59,7 @@ public class RampMechanic2 : MonoBehaviour
 
     private void OnMouseDragg()
     {
-        if (!isWall || lastCreatedRamp == null)
+        if (!isPrefabCreatable || lastCreatedRamp == null)
         {
             if (rampBlendCor != null)
                 StopCoroutine(rampBlendCor);
@@ -66,15 +67,12 @@ public class RampMechanic2 : MonoBehaviour
         }
 
         if (rampBlendCor == null)
-        {
             rampBlendCor = StartCoroutine(BlendShapeScale(.5f, lastCreatedRamp.GetComponent<SkinnedMeshRenderer>()));
-        }
-        lastCreatedRamp.GetComponent<RampPrefab>().Bake(lastCreatedRamp.GetComponent<SkinnedMeshRenderer>(), blendShapeIndexCount);
     }
 
     private void OnMouseUpp()
     {
-        isWall = false;
+        isPrefabCreatable = false;
         if (rampBlendCor != null)
             StopCoroutine(rampBlendCor);
         rampBlendCor = null;
@@ -128,6 +126,7 @@ public class RampMechanic2 : MonoBehaviour
                 }
             }
 
+            lastCreatedRamp.GetComponent<RampPrefab>().Bake(lastCreatedRamp.GetComponent<SkinnedMeshRenderer>(), blendShapeIndexCount);
             yield return null;
         }
     }
