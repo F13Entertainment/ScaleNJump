@@ -114,11 +114,11 @@ public class RampMechanic1 : MonoBehaviour
     public void UpdatePosition(int blendShapeIndex, bool isIncrementState, float duration)
     {
         if ((blendShapeIndex == 0 && !isIncrementState) || (blendShapeIndex == 1 && isIncrementState))
-            transform?.DOLocalMove(new Vector2(2.82f, 1f - 2f), duration).SetEase(Ease.Linear);
+            transform.DOLocalMove(new Vector2(2.82f, 1f - 2f), duration).SetEase(Ease.Linear);
         else if (blendShapeIndex == 0 && isIncrementState)
-            transform?.DOLocalMove(new Vector2(3f, 0f - 2f), duration).SetEase(Ease.Linear);
+            transform.DOLocalMove(new Vector2(3f, 0f - 2f), duration).SetEase(Ease.Linear);
         else if (blendShapeIndex == 1 && !isIncrementState)
-            transform?.DOLocalMove(new Vector2(2.17f, 2.1f - 2f), duration).SetEase(Ease.Linear);
+            transform.DOLocalMove(new Vector2(2.17f, 2.1f - 2f), duration).SetEase(Ease.Linear);
         else
             Debug.LogWarning("Ramp doesn't has blendShapeIndex for update position.");
     }
