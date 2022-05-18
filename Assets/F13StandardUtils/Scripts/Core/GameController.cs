@@ -17,6 +17,8 @@ namespace F13StandardUtils.Scripts.Core
         private bool isGamePlayStateInvoked;
         public int Level => level;
         public bool IsLevelInit => isLevelInit;
+        private bool isInGame = false;
+        public bool IsInGame => isInGame;
 
         public LevelEvent OnBeforeLevelInit=new LevelEvent();
         public LevelEvent OnLevelInit=new LevelEvent();
@@ -121,6 +123,7 @@ namespace F13StandardUtils.Scripts.Core
         
         private void OnBeforeLevelInitialized()
         {
+            Time.timeScale = 1f;
             OnBeforeLevelInit.Invoke(level);
             //TODO
         }
@@ -166,12 +169,14 @@ namespace F13StandardUtils.Scripts.Core
         
         private void OnGamePlayEnter()
         {
+            isInGame = true;
             OnGameplayEnter.Invoke();
             //TODO
         }
 
         private void OnGamePlayExit()
         {
+            isInGame = false;
             OnGameplayExit.Invoke();
             //TODO
         }
@@ -181,6 +186,7 @@ namespace F13StandardUtils.Scripts.Core
         {
             OmegaLevelManager.Instance.Success();
             OnLevelSuccess.Invoke(level);
+            Time.timeScale = 0f;
         }
 
         [Button]
@@ -188,6 +194,7 @@ namespace F13StandardUtils.Scripts.Core
         {
             OmegaLevelManager.Instance.Fail();
             OnLevelFail.Invoke(level);
+            Time.timeScale = 0f;
         }
         
         private void UpdateRemoteConfigParams()

@@ -20,7 +20,6 @@ public class Ball : Singleton<Ball>
     {
         if (collision.gameObject.tag == "Border" || collision.gameObject.tag == "Obstacle")
         {
-            Time.timeScale = 0f;
             GameController.Instance.FailLevel();
         }
     }

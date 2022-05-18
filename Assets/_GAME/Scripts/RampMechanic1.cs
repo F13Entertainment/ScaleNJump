@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using F13StandardUtils.Scripts.Core;
 using UnityEngine;
 
 public class RampMechanic1 : MonoBehaviour
@@ -9,7 +10,7 @@ public class RampMechanic1 : MonoBehaviour
     [SerializeField] private Transform rampPrefabCreateTransform;
 
     private GameObject lastCreatedRamp;
-    private Coroutine rampBlendCor;
+    private Coroutine rampBlendCor = null;
 
     private const int blendShapeIndexCount = 2;
 
@@ -26,16 +27,23 @@ public class RampMechanic1 : MonoBehaviour
 
     private void OnMouseDragg()
     {
-        if(rampBlendCor==null)
+        if (!GameController.Instance.IsInGame)
+            return;
+        if (rampBlendCor==null)
             rampBlendCor = StartCoroutine(BlendShapeScale(.5f));
     }
 
     private void OnMouseUpp()
     {
-        transform.DOKill();
+        if (!GameController.Instance.IsInGame)
+            return;
 
         if (rampBlendCor != null)
+        {
+            transform.DOKill();
             StopCoroutine(rampBlendCor);
+        }
+
         rampBlendCor = null;
 
         if (lastCreatedRamp)

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using UnityEngine;
-using UnityEngine.iOS;
+//using UnityEngine.iOS;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -153,18 +153,18 @@ public class Taptic : MonoBehaviour {
 #endif
         }
 
-        static bool iPhone6s() {
-                return SystemInfo.deviceModel == "iPhone8,1" || SystemInfo.deviceModel == "iPhone8,2";
-        }
+        //static bool iPhone6s() {
+        //        return SystemInfo.deviceModel == "iPhone8,1" || SystemInfo.deviceModel == "iPhone8,2";
+        //}
 
-        static bool BelowiPhone6s() {
-                if (Device.generation.ToString().Contains("iPad") || Device.generation.ToString().Contains("iPod")) {
-                        return true;
-                }
-                if (Device.generation == DeviceGeneration.iPhone || Device.generation == DeviceGeneration.iPhone3G || Device.generation == DeviceGeneration.iPhone3GS || Device.generation == DeviceGeneration.iPhone4 || Device.generation == DeviceGeneration.iPhone4S || Device.generation == DeviceGeneration.iPhone5 || Device.generation == DeviceGeneration.iPhone5S || Device.generation == DeviceGeneration.iPhone5C || Device.generation == DeviceGeneration.iPhone6 || Device.generation == DeviceGeneration.iPhone6Plus || Device.generation == DeviceGeneration.iPhoneSE1Gen) {
-                        return true;
-                }
-                return false;
-        }
+        //static bool BelowiPhone6s() {
+        //        if (Device.generation.ToString().Contains("iPad") || Device.generation.ToString().Contains("iPod")) {
+        //                return true;
+        //        }
+        //        if (Device.generation == DeviceGeneration.iPhone || Device.generation == DeviceGeneration.iPhone3G || Device.generation == DeviceGeneration.iPhone3GS || Device.generation == DeviceGeneration.iPhone4 || Device.generation == DeviceGeneration.iPhone4S || Device.generation == DeviceGeneration.iPhone5 || Device.generation == DeviceGeneration.iPhone5S || Device.generation == DeviceGeneration.iPhone5C || Device.generation == DeviceGeneration.iPhone6 || Device.generation == DeviceGeneration.iPhone6Plus || Device.generation == DeviceGeneration.iPhoneSE1Gen) {
+        //                return true;
+        //        }
+        //        return false;
+        //}
 
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using F13StandardUtils.Scripts.Core;
 using UnityEngine;
 
 public class RampMechanic2 : MonoBehaviour
@@ -36,6 +37,9 @@ public class RampMechanic2 : MonoBehaviour
 
     private void OnMouseDownn()
     {
+        if (!GameController.Instance.IsInGame)
+            return;
+
         RaycastHit hit;
         Ray rr = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(rr, out hit);

@@ -836,6 +836,18 @@ PrefabInstance:
       propertyPath: HapticManager
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6570748914114539095, guid: 88f748c7f87865041a1cf71bc62ad24e, type: 3}
+      propertyPath: levels.Array.data[0].levelPrefab
+      value: 
+      objectReference: {fileID: 4460023013338063581, guid: 5065593e0cc81491b98917c17b9ca969, type: 3}
+    - target: {fileID: 6570748914114539095, guid: 88f748c7f87865041a1cf71bc62ad24e, type: 3}
+      propertyPath: levels.Array.data[1].levelPrefab
+      value: 
+      objectReference: {fileID: 4460023013338063581, guid: de2cbabe1354f604a914a1297821ffbb, type: 3}
+    - target: {fileID: 6570748914114539095, guid: 88f748c7f87865041a1cf71bc62ad24e, type: 3}
+      propertyPath: levels.Array.data[2].levelPrefab
+      value: 
+      objectReference: {fileID: 4460023013338063581, guid: 5065593e0cc81491b98917c17b9ca969, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f748c7f87865041a1cf71bc62ad24e, type: 3}
 --- !u!1 &2093349803

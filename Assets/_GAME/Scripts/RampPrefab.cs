@@ -35,9 +35,20 @@ public class RampPrefab : MonoBehaviour
         {
             var velo = collision.gameObject.GetComponent<Rigidbody>().velocity.normalized;
             Vector3 temp = new Vector3(Mathf.Abs(velo.x), velo.y, 0f);
-            collision.gameObject.GetComponent<Rigidbody>().velocity = temp * 8f;// .AddForce(collision.gameObject.GetComponent<Rigidbody>().velocity * 3f, ForceMode.VelocityChange);
+            collision.gameObject.GetComponent<Rigidbody>().velocity = temp * 12f;// .AddForce(collision.gameObject.GetComponent<Rigidbody>().velocity * 3f, ForceMode.VelocityChange);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ball")
+        {
+            var velo = collision.gameObject.GetComponent<Rigidbody>().velocity.normalized;
+            Vector3 temp = new Vector3(Mathf.Abs(velo.x), velo.y, 0f);
+            collision.gameObject.GetComponent<Rigidbody>().velocity = temp * 12f;// .AddForce(collision.gameObject.GetComponent<Rigidbody>().velocity * 3f, ForceMode.VelocityChange);
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
