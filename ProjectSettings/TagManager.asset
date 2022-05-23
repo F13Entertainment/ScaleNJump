@@ -10,6 +10,7 @@ TagManager:
   - Ramp
   - Obstacle
   - Border
+  - Diamond
   layers:
   - Default
   - TransparentFX
