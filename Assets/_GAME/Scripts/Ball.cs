@@ -3,24 +3,18 @@ using UnityEngine;
 
 public class Ball : Singleton<Ball>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        //rigidBody.AddForce(Vector3.right*3f, ForceMode.VelocityChange);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    [SerializeField]private Rigidbody rb;
+    public Rigidbody Rb => rb;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Border" || collision.gameObject.tag == "Obstacle")
-        {
             GameController.Instance.FailLevel();
-        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Diamond")
+            Destroy(other.gameObject);
     }
 }

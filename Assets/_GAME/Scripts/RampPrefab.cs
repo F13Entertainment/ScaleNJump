@@ -35,7 +35,7 @@ public class RampPrefab : MonoBehaviour
         {
             var velo = collision.gameObject.GetComponent<Rigidbody>().velocity.normalized;
             Vector3 temp = new Vector3(Mathf.Abs(velo.x), velo.y, 0f);
-            collision.gameObject.GetComponent<Rigidbody>().velocity = temp * 12f;// .AddForce(collision.gameObject.GetComponent<Rigidbody>().velocity * 3f, ForceMode.VelocityChange);
+            collision.gameObject.GetComponent<Rigidbody>().velocity = temp * 12f;// collision.gameObject.AddForce(collision.gameObject.GetComponent<Rigidbody>().velocity * 3f, ForceMode.VelocityChange);
         }
     }
 
