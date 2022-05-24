@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Enemy
   - Ball
-  - Wall
   - Ramp
   - Obstacle
   - Border
