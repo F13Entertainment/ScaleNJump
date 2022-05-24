@@ -3190,6 +3190,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2344574449390784228}
     m_Modifications:
+    - target: {fileID: 296167539733374148, guid: 10d6fa6dd9705431b9f576857dbc7037, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 436751861359826125, guid: 10d6fa6dd9705431b9f576857dbc7037, type: 3}
       propertyPath: m_Name
       value: Environment
@@ -3236,6 +3240,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7750951222112374191, guid: 10d6fa6dd9705431b9f576857dbc7037, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891561244295516667, guid: 10d6fa6dd9705431b9f576857dbc7037, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
