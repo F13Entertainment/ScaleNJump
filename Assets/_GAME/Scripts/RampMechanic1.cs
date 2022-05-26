@@ -2,8 +2,9 @@ using System.Collections;
 using DG.Tweening;
 using F13StandardUtils.Scripts.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class RampMechanic1 : MonoBehaviour
+public class RampMechanic1 : Singleton<RampMechanic1>
 {
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
     [SerializeField] private GameObject rampPrefab;
@@ -13,16 +14,31 @@ public class RampMechanic1 : MonoBehaviour
     private Coroutine rampBlendCor = null;
 
     private const int blendShapeIndexCount = 2;
+    [SerializeField] private TutorialController tutorialController;
+
+    public UnityEvent OnRampFullyOpened;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
-            OnMouseUpp();
-
         if (Input.GetMouseButton(0))
-            OnMouseDragg();
+        {
+            if (tutorialController == null)
+                OnMouseDragg();
+            else
+            {
+                if (rampBlendCor != null && !tutorialController.IsButtonHoldActive)
+                    StopCoroutine(rampBlendCor);
+                if (tutorialController.IsButtonHoldActive)
+                    OnMouseDragg();
+            }
+        }
 
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            OnMouseUpp();
+        }
     }
 
     private void OnMouseDragg()
@@ -45,7 +61,8 @@ public class RampMechanic1 : MonoBehaviour
         }
 
         rampBlendCor = null;
-
+        if (tutorialController!= null && !tutorialController.IsButtonUpActive)
+            return;
         if (lastCreatedRamp)
             Destroy(lastCreatedRamp);
 
@@ -69,9 +86,9 @@ public class RampMechanic1 : MonoBehaviour
         bool isIncrementState = false;
         int blendShapeIndex = blendShapeIndexCount - 1;
 
-        while (true)
+        while (blendValue > 0f && blendShapeIndex >= 0)
         {
-            blendValue = Mathf.Clamp(isIncrementState ? blendValue + (Time.deltaTime/duration) : blendValue - (Time.deltaTime/duration), 0f, 1f);
+            blendValue = Mathf.Clamp(isIncrementState ? blendValue + (Time.deltaTime / duration) : blendValue - (Time.deltaTime / duration), 0f, 1f);
             skinnedMeshRenderer.SetBlendShapeWeight(blendShapeIndex, (blendValue * 100f));
 
             if (blendValue >= 1f)
@@ -109,6 +126,7 @@ public class RampMechanic1 : MonoBehaviour
 
             yield return null;
         }
+        OnRampFullyOpened.Invoke();
     }
 
     public void UpdatePosition(int blendShapeIndex, bool isIncrementState, float duration)

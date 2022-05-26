@@ -7,6 +7,7 @@ namespace Assets.F13SDK.Scripts
         private bool _isAudioPlaying = true;
         private float _audioMasterVolume = 1f;
         private bool _isMusicPlaying = true;
+        private bool _isTutorialCompleted = false;
         private float _musicMasterVolume = 1f;
         private bool _isHapticActive = true;
         private int _level = 1;
@@ -53,6 +54,21 @@ namespace Assets.F13SDK.Scripts
                 PlayerPrefs.SetInt("isMusicPlaying", _isMusicPlaying ? 1 : 0);
             }
         }
+
+        public bool IsTutorialCompleted
+        {
+            get
+            {
+                if (!PlayerPrefs.HasKey("isTutorialCompleted")) return _isTutorialCompleted;
+                return PlayerPrefs.GetInt("isTutorialCompleted") == 1 ? true : false;
+            }
+            set
+            {
+                _isMusicPlaying = value;
+                PlayerPrefs.SetInt("isTutorialCompleted", _isTutorialCompleted ? 1 : 0);
+            }
+        }
+
         public float MusicMasterVolume
         {
             get

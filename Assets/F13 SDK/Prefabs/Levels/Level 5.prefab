@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 5778961753645295124}
-  Offset: {x: 5, y: 0, z: 0}
+  Offset: {x: 8, y: 0, z: 0}
 --- !u!1 &6025132340764861662
 GameObject:
   m_ObjectHideFlags: 0
