@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Assets.F13SDK.Scripts;
 using F13StandardUtils.Scripts.Core;
@@ -20,11 +21,21 @@ public class TutorialController : Singleton<TutorialController>
     private void OnEnable()
     {
         GameController.Instance.OnGameplayEnter.AddListener(TutorialInit);
+        GameController.Instance.OnBeforeLevelDestroy.AddListener(OnBeforeLevelDestroy);
     }
 
     private void OnDisable()
     {
         GameController.Instance?.OnGameplayEnter.RemoveListener(TutorialInit);
+        GameController.Instance?.OnBeforeLevelDestroy.AddListener(OnBeforeLevelDestroy);
+    }
+
+    private void OnBeforeLevelDestroy(int level)
+    {
+        if (level == 0 && IsTutorialActive && currentStepIndex >= stepList.Count)
+        {
+            PlayerPrefsManager.Instance.playerData.IsTutorialCompleted = true;
+        }
     }
 
     private void TutorialInit()
