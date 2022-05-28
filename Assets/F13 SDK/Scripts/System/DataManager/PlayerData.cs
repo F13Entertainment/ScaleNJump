@@ -64,7 +64,7 @@ namespace Assets.F13SDK.Scripts
             }
             set
             {
-                _isMusicPlaying = value;
+                _isTutorialCompleted = value;
                 PlayerPrefs.SetInt("isTutorialCompleted", _isTutorialCompleted ? 1 : 0);
             }
         }
