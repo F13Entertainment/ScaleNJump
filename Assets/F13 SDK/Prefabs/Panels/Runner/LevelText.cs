@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LevelText : MonoBehaviour
 {
-    private int level=-1;
+    private int level = 0;
     [SerializeField] private TextMeshProUGUI _text;
 
     private void Update()
