@@ -24,7 +24,6 @@ public class TutorialStep3 : TutorialStepBase
     private IEnumerator NextStepDelay()
     {
         yield return new WaitForSeconds(1f);
-        Debug.Log("GİRDİM");
         isButtonHoldActive = true;
         isButtonUpActive = true;
         Ball.Instance.Rb.useGravity = true;
