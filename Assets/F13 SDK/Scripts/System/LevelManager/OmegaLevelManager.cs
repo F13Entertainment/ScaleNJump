@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using Sirenix.OdinInspector;
+using ElephantSDK;
 
 namespace Assets.F13SDK.Scripts
 { 
@@ -117,8 +118,8 @@ namespace Assets.F13SDK.Scripts
             {
                 currentLevel.IsLevelFailed = true;
                 On_LevelFailed?.Invoke();
-                //Elephant.LevelFailed(currentLevel.levelId);
-                //Debug.Log("ELEPHANT Level failed :" + currentLevel.levelId);
+                Elephant.LevelFailed(currentLevel.levelId);
+                Debug.Log("ELEPHANT Level failed :" + currentLevel.levelId);
             }
 
         }
@@ -128,8 +129,8 @@ namespace Assets.F13SDK.Scripts
             {
                 currentLevel.IsLevelCompleted = true;
                 On_LevelCompleted?.Invoke();
-                //Elephant.LevelCompleted(currentLevel.levelId);
-                //Debug.Log("ELEPHANT Level completed :" + currentLevel.levelId);
+                Elephant.LevelCompleted(currentLevel.levelId);
+                Debug.Log("ELEPHANT Level completed :" + currentLevel.levelId);
             }
 
         }
@@ -149,8 +150,8 @@ namespace Assets.F13SDK.Scripts
             PlayerPrefs.SetInt("level", levelId);
             currentLevelObject.SetActive(true);
             On_LevelInitialized.Invoke();
-            //Elephant.LevelStarted(levelId);
-            //Debug.Log("ELEPHANT Level start :" + levelId);
+            Elephant.LevelStarted(levelId);
+            Debug.Log("ELEPHANT Level start :" + levelId);
         }
 
     }
